@@ -2,7 +2,7 @@ import {iMap, IMap} from './Map';
 import {Iterable, IterableImpl} from './Iterable';
 import {option, Option, IOption} from './Option';
 import {Array as ES6Array} from 'es6-shim';
-Array = ES6Array;
+let Array = ES6Array;
 
 export interface IList<A> extends Iterable<A> {
 

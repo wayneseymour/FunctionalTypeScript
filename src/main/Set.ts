@@ -2,7 +2,7 @@ import {Iterable, IterableImpl} from './Iterable';
 import {list, List} from './List';
 import {option, Option, IOption} from './Option';
 import {Array as ES6Array} from 'es6-shim';
-Array = ES6Array;
+let Array = ES6Array;
 
 
 export class ISet<A> implements Iterable<A> {
@@ -11,7 +11,7 @@ export class ISet<A> implements Iterable<A> {
 
   constructor(data: A[] | Iterable<A>) {
     this._setData = new Set<A>();
-    if (data) {
+    if (data && data instanceof Array) {
       data.forEach((value : A) => {
         this._setData.add(value);
       });

@@ -30,4 +30,5 @@ gulp.task("typings-install",function(done){
  */
 gulp.task('build', function (done) {
   runSequence('typings-install','build-scripts','test',done);
+  //runSequence('build-scripts','test',done);
 });

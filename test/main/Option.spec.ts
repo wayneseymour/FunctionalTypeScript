@@ -22,4 +22,9 @@ describe('Option Test ', () => {
     expect(someOption.size()).toBe(1);
   });
 
+  it('Expect toString() to return a String version', () => {
+    expect(option('something').toString()).toEqual('Some(something)');
+    expect(none.toString()).toEqual('None');
+  });
+
 });

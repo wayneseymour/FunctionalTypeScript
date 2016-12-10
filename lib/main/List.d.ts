@@ -39,7 +39,7 @@ export declare class List<A> implements IList<A> {
     isEmpty(): boolean;
     iterator(): Iterable<A>;
     map<B>(f: (a: A) => B): IList<B>;
-    length: number;
+    readonly length: number;
     reduce<A1 extends A>(op: (x: A1, y: A1) => A1): A;
     reverse(): IList<A>;
     size(): number;

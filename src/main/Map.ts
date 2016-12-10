@@ -2,7 +2,7 @@ import {Iterable, IterableImpl} from './Iterable';
 import {list, List, IList} from './List';
 import {option, Option, IOption} from './Option';
 import {Array as ES6Array, Map as ES6Map} from 'es6-shim';
-Array = ES6Array;
+let Array = ES6Array;
 
 export class IMap<K,V> implements Iterable<[K,V]> {
 
@@ -18,7 +18,7 @@ export class IMap<K,V> implements Iterable<[K,V]> {
   }
 
   public count(p: (tuple : [K,V]) => boolean) : number {
-    return new IMapIterator(this._mapData.entries()).count(p);
+    return new IMapIterator<[K,V]>(this._mapData.entries()).count(p);
   }
 
   public drop(n : number) : IMap<K,V> {

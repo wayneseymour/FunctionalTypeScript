@@ -19,29 +19,32 @@ export declare abstract class Option<A> implements IOption<A> {
     foldLeft<B>(z: B): (op: (b: B, a: A) => B) => B;
     foldRight<B>(z: B): (op: (a: A, b: B) => B) => B;
     abstract map<B>(f: (object: A) => B): Option<B>;
-    get: A;
+    readonly get: A;
     getOrElse(defaultValue: A): A;
     head(): A;
     headOption(): Option<A>;
     abstract size(): number;
     toArray(): A[];
     abstract toList(): IList<A>;
+    abstract toString(): string;
 }
 export declare class Some<A> extends Option<A> {
     constructor(value: A);
     isEmpty(): boolean;
-    get: A;
+    readonly get: A;
     map<B>(f: (object: A) => B): Option<B>;
     size(): number;
     toList(): IList<A>;
+    toString(): string;
 }
 export declare class None<A> extends Option<A> {
     constructor();
     isEmpty(): boolean;
-    get: A;
+    readonly get: A;
     map<B>(f: (object: A) => B): Option<B>;
     size(): number;
     toList(): IList<A>;
+    toString(): string;
 }
 export declare const none: None<any>;
 export declare function option<T>(x: T): Option<T>;

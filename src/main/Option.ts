@@ -82,7 +82,9 @@ export abstract class Option<A> implements IOption<A> {
     return this.toList().toArray();
   }
 
-  public abstract toList() : IList<A>
+  public abstract toList() : IList<A>;
+
+  public abstract toString() : string;
 }
 
 export class Some<A> extends Option<A> {
@@ -110,6 +112,10 @@ export class Some<A> extends Option<A> {
   public toList() : IList<A> {
     return new List([this.value]);
   }
+
+  public toString() : string {
+    return `Some(${this.value})`;
+  }
 }
 
 export class None<A> extends Option<A> {
@@ -136,6 +142,10 @@ export class None<A> extends Option<A> {
 
   public toList() : IList<A> {
     return new List([]);
+  }
+
+  public toString() : string {
+    return 'None';
   }
 }
 

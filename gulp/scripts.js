@@ -15,7 +15,10 @@ var path = require('path'),
     $ = require('gulp-load-plugins')();
 
 /* Initialize TS Project */
-var tsProject = $.typescript.createProject(conf.paths.tsconfig_json);
+var tsProject = $.typescript.createProject(conf.paths.tsconfig_json, {
+  //Use TS version installed by NPM instead of gulp-typescript's built-in
+  typescript: require('typescript')
+});
 
 /* Concat all source, test and typings TS files  */
 var tsFiles = [].concat(path.join(conf.paths.src, conf.path_pattern.ts), path.join(conf.paths.test, conf.path_pattern.ts), conf.paths.typings.browser);
@@ -137,5 +140,5 @@ gulp.task('nsp', function (done) {
  * @param done - done callback function.
  */
 gulp.task('build-scripts',function(done) {
-  runSequence('nsp','clean-build',['tslint', 'tsconfig-update'], ['npm', 'build-bower'], 'inject-js', done);
+  runSequence('nsp','clean-build',['tslint'], ['npm', 'build-bower'], 'inject-js', done);
 });

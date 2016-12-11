@@ -2,6 +2,7 @@ import {Iterable, IterableImpl} from './Iterable';
 import {list, List, IList} from './List';
 import {option, Option, IOption} from './Option';
 import {Array as ES6Array, Map as ES6Map} from 'es6-shim';
+import {ISet} from './Set';
 let Array = ES6Array;
 
 export class IMap<K,V> implements Iterable<[K,V]> {
@@ -148,6 +149,10 @@ export class IMap<K,V> implements Iterable<[K,V]> {
 
   public toList() : IList<[K,V]> {
     return list<[K,V]>(this.iterator());
+  }
+
+  public toSet() : ISet<[K,V]> {
+    return new ISet<[K,V]>(this.iterator());
   }
 
   public toString() : string {

@@ -1,5 +1,6 @@
 import { Iterable } from './Iterable';
 import { IList } from './List';
+import { ISet } from "./Set";
 export interface IOption<A> extends Iterable<A> {
     get: A;
 }
@@ -26,6 +27,7 @@ export declare abstract class Option<A> implements IOption<A> {
     abstract size(): number;
     toArray(): A[];
     abstract toList(): IList<A>;
+    abstract toSet(): ISet<A>;
     abstract toString(): string;
 }
 export declare class Some<A> extends Option<A> {
@@ -35,6 +37,7 @@ export declare class Some<A> extends Option<A> {
     map<B>(f: (object: A) => B): Option<B>;
     size(): number;
     toList(): IList<A>;
+    toSet(): ISet<A>;
     toString(): string;
 }
 export declare class None<A> extends Option<A> {
@@ -44,6 +47,7 @@ export declare class None<A> extends Option<A> {
     map<B>(f: (object: A) => B): Option<B>;
     size(): number;
     toList(): IList<A>;
+    toSet(): ISet<A>;
     toString(): string;
 }
 export declare const none: None<any>;

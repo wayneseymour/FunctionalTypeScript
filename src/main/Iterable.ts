@@ -1,5 +1,6 @@
 import {option, Option, IOption} from './Option';
 import {list, List, IList} from './List';
+import {ISet} from './Set';
 
 export interface Iterable<A> {
 
@@ -21,6 +22,8 @@ export interface Iterable<A> {
 
   filterNot(p: (a: A) => boolean) : Iterable<A>;
 
+  //flatten<B>() : Iterable<B>;
+
   foldLeft<B>(z: B): (op: (b : B, a : A) => B) => B;
 
   foldRight<B>(z: B): (op: (a : A, b : B) => B) => B;
@@ -38,6 +41,8 @@ export interface Iterable<A> {
   toArray() : A[];
 
   toList() : IList<A>;
+
+  toSet() : ISet<A>;
 }
 
 export abstract class IterableImpl<A> implements Iterable<A> {
@@ -131,5 +136,9 @@ export abstract class IterableImpl<A> implements Iterable<A> {
 
   public toList() : IList<A> {
     return this._data.toList();
+  }
+
+  public toSet() : ISet<A> {
+    return this._data.toSet();
   }
 }

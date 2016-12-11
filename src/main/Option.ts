@@ -1,5 +1,6 @@
 import {Iterable, IterableImpl} from './Iterable';
 import {IList, List} from './List';
+import {ISet} from "./Set";
 
 export interface IOption<A> extends Iterable<A> {
 
@@ -84,6 +85,8 @@ export abstract class Option<A> implements IOption<A> {
 
   public abstract toList() : IList<A>;
 
+  public abstract toSet() : ISet<A>;
+
   public abstract toString() : string;
 }
 
@@ -111,6 +114,10 @@ export class Some<A> extends Option<A> {
 
   public toList() : IList<A> {
     return new List([this.value]);
+  }
+
+  public toSet() : ISet<A> {
+    return new ISet([this.value]);
   }
 
   public toString() : string {
@@ -142,6 +149,10 @@ export class None<A> extends Option<A> {
 
   public toList() : IList<A> {
     return new List([]);
+  }
+
+  public toSet() : ISet<A> {
+    return new ISet([]);
   }
 
   public toString() : string {

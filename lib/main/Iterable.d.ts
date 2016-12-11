@@ -1,5 +1,6 @@
 import { Option, IOption } from './Option';
 import { IList } from './List';
+import { ISet } from './Set';
 export interface Iterable<A> {
     count(p: (x: A) => boolean): number;
     find(p: (a: A) => boolean): IOption<A>;
@@ -19,6 +20,7 @@ export interface Iterable<A> {
     size(): number;
     toArray(): A[];
     toList(): IList<A>;
+    toSet(): ISet<A>;
 }
 export declare abstract class IterableImpl<A> implements Iterable<A> {
     private _iterator;
@@ -43,4 +45,5 @@ export declare abstract class IterableImpl<A> implements Iterable<A> {
     size(): number;
     toArray(): A[];
     toList(): IList<A>;
+    toSet(): ISet<A>;
 }

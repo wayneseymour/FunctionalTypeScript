@@ -25,6 +25,7 @@ export declare class ISet<A> implements Iterable<A> {
     size(): number;
     toArray(): A[];
     toList(): List<A>;
+    toSet(): ISet<A>;
     toString(): string;
 }
 export declare function iSet<A>(data: A[] | Iterable<A>): ISet<A>;

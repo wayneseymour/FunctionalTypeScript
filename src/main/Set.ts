@@ -145,6 +145,10 @@ export class ISet<A> implements Iterable<A> {
     return list<A>(this.iterator());
   }
 
+  public toSet() : ISet<A> {
+    return new ISet<A>(this.iterator());
+  }
+
   public toString() : string {
     const rawString = this.toArray().map((value : A) => `${value}`).join(', ');
     return `Set(${rawString})`;

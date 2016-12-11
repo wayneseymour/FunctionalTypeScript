@@ -1,6 +1,7 @@
 import { Iterable } from './Iterable';
 import { IList } from './List';
 import { Option, IOption } from './Option';
+import { ISet } from './Set';
 export declare class IMap<K, V> implements Iterable<[K, V]> {
     private _mapData;
     constructor(data: Iterable<[K, V]>);
@@ -26,6 +27,7 @@ export declare class IMap<K, V> implements Iterable<[K, V]> {
     size(): number;
     toArray(): [K, V][];
     toList(): IList<[K, V]>;
+    toSet(): ISet<[K, V]>;
     toString(): string;
 }
 export declare function iMap<K, V>(iterable: Iterable<[K, V]>): IMap<K, V>;

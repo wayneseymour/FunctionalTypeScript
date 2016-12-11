@@ -2,6 +2,7 @@ import {iMap, IMap} from './Map';
 import {Iterable, IterableImpl} from './Iterable';
 import {option, Option, IOption} from './Option';
 import {Array as ES6Array} from 'es6-shim';
+import {ISet, iSet} from './Set';
 let Array = ES6Array;
 
 export interface IList<A> extends Iterable<A> {
@@ -162,6 +163,10 @@ export class List<A> implements IList<A> {
 
   public toList() : IList<A> {
     return list(this._listData);
+  }
+
+  public toSet() : ISet<A> {
+    return iSet(this);
   }
 
   public toString() : string {

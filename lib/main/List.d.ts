@@ -1,5 +1,6 @@
 import { Iterable } from './Iterable';
 import { IOption } from './Option';
+import { ISet } from './Set';
 export interface IList<A> extends Iterable<A> {
     length: number;
     contains(elem: A): boolean;
@@ -45,6 +46,7 @@ export declare class List<A> implements IList<A> {
     size(): number;
     toArray(): A[];
     toList(): IList<A>;
+    toSet(): ISet<A>;
     toString(): string;
     union(that: A[] | IList<A>): IList<A>;
 }
